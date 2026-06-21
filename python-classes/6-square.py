@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-"""Defines a square."""
+"""This module defines a square class."""
 
 
 class Square:
-    """Represents a square."""
+    """This class represents a square."""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initializes a new Square."""
+        """Initializes a square."""
         self.size = size
         self.position = position
 
     @property
     def size(self):
-        """Get/set the current size of the square."""
+        """Retrieves the size."""
         return self.__size
 
     @size.setter
@@ -25,14 +25,16 @@ class Square:
 
     @property
     def position(self):
-        """Get/set the current position of the square."""
+        """Retrieves the position."""
         return self.__position
 
     @position.setter
     def position(self, value):
-        if (type(value) is not tuple or len(value) != 2 or
-                type(value[0]) is not int or type(value[1]) is not int or
-                value[0] < 0 or value[1] < 0):
+        if type(value) is not tuple or len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if type(value[0]) is not int or type(value[1]) is not int:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -41,15 +43,12 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Print the square with the # character."""
+        """Prints the square with the character #."""
         if self.__size == 0:
             print("")
             return
 
-        # Print the vertical position (empty lines, no spaces)
         for _ in range(self.__position[1]):
             print("")
-
-        # Print the square with horizontal position (spaces before #)
         for _ in range(self.__size):
             print(" " * self.__position[0] + "#" * self.__size)
