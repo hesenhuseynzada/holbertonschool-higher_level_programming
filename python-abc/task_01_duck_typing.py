@@ -56,3 +56,11 @@ def shape_info(shape):
     """Prints the area and perimeter of a shape using duck typing."""
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
+
+
+if __name__ == "__main__":
+    my_circle = Circle(5)
+    my_rect = Rectangle(4, 6)
+    
+    shape_info(my_circle)
+    shape_info(my_rect)
