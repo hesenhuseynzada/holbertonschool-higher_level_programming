@@ -1,1 +1,1 @@
-mysql -hlocalhost -uroot -p
+^--mysql -hlocalhost -uroot -p
