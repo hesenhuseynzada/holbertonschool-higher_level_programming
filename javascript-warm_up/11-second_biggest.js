@@ -1,17 +1,9 @@
-const args = process.argv.slice(2);
-
-if (args.length < 2) {
+#!/usr/bin/node
+if (process.argv.length <= 3) {
   console.log(0);
 } else {
-  // Convert all arguments to numbers
-  const numbers = args.map(Number);
-  
-  // Filter out duplicates and sort descending
-  const uniqueSorted = [...new Set(numbers)].sort((a, b) => b - a);
-
-  if (uniqueSorted.length < 2) {
-    console.log(0);
-  } else {
-    console.log(uniqueSorted[1]);
-  }
+  const args = process.argv.map(Number)
+    .slice(2, process.argv.length)
+    .sort((a, b) => a - b);
+  console.log(args[args.length - 2]);
 }
